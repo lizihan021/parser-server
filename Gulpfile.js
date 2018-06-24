@@ -1,38 +1,31 @@
-var gulp = require('gulp'),
-    spawn = require('child_process').spawn,
-    node;
+const gulp = require('gulp');
+const spawn = require('child_process').spawn;
+let node;
 
-/**
- * $ gulp server
- * description: launch the server. If there's a server already running, kill it.
- */
-gulp.task('server', function() {
-  if (node) node.kill()
-  node = spawn('node', ['bin/www'], {stdio: 'inherit'})
-  node.on('close', function (code) {
-    if (code === 8) {
-      gulp.log('Error detected, waiting for changes...');
+async function startServer() {
+  if (node) node.kill();
+  node = await spawn("node", ["./bin/www"], { stdio: "inherit" });
+
+  node.on("close", function (code) {
+    if(code === 8) {
+      console.log("Error detected, waiting for changes...");
     }
   });
-})
+}
 
-/**
- * $ gulp
- * description: start the development environment
- */
-gulp.task('default', function() {
-  gulp.run('server')
-
-  gulp.watch(['./app.js', './server/*.js', './views/*.jade'], function() {
-    gulp.run('server')
-  })
-  
-  // Need to watch for sass changes too? Just add another watch call!
-  // no more messing around with grunt-concurrent or the like. Gulp is
-  // async by default.
-})
+gulp.task("default", function () {
+  startServer();
+  // Start the server, if a change is detected restart it
+  gulp.watch(
+    ['./app.js', './server/*.js', './views/*.jade'],
+    {
+      queue: false,
+      ignoreInitial: false // Execute task on startup 
+    },
+    startServer);
+});
 
 // clean up if an error goes unhandled.
 process.on('exit', function() {
-    if (node) node.kill()
-})
+    if (node) node.kill();
+});
