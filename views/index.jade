@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1 Welcome to Berkeley Parser Analyser Demo
+  p.
+    This website is a online demo of the <a href="https://github.com/jkkummerfeld/berkeley-parser-analyser">Berkeley Parser Analyser </a> 
+  p.
+    You can check your test file with a gold file:
+  br
+  form(enctype="multipart/form-data", method="post", action="/upload")
+    div.input
+      span.label 1. Upload test file 
+      input(type="file", name="test_file")
+    br
+    div.input
+      span.label 2. Upload gold file 
+      input(type="file", name="gold_file")
+    div.input
+      span.label Or choose gold file
+      select(name="gold_select")
+        option(value="none") None
+        each f in gold_select
+          option(value= f) #{f}
+    br
+    div.input
+      span.label 3. Choose script
+      select(name="script_select")
+        each f in script_select
+          option(value= f) #{f}
+    div.actions
+      input(type="submit", value="submit")
