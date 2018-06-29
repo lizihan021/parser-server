@@ -1,3 +1,19 @@
+/* -*- coding: utf-8 -*-
+This file is the main file of the server that handles:
+'/' , '/upload' , '/download'
+'/' root is a form that will submit:
+    'test_file'     upload a test file     required 
+    'gold_file'     upload a gold file     optional
+    'gold_select'   or select a golf file  optional
+    'script_select' choose a script        required
+
+'/upload' handles post request of the form. It will run 
+          the selected script with test and gold files as inputs.
+          Gold file can be either uploaded or choosed from public/gold/
+          Result files will be stored at public/results.
+
+'/download' will download files in public/results folder.
+*/
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
@@ -139,7 +155,7 @@ router.post('/upload', function(req, res, next) {
 });
 
 
-// download result file
+/* Download result file */
 router.get('/download/:file', function(req, res){
   var file = path.join(__dirname, "../" + result_path + req.params.file);
   res.download(file); 

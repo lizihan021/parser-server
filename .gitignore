@@ -1,3 +1,5 @@
 node_modules
 public/upload/*
 public/results/*
+!public/upload/placeholder
+!public/results/placeholder
