@@ -1,19 +1,27 @@
 Berkeley Parser Analyser Server
 ===
 
-This website is a online demo of the <a href="https://github.com/jkkummerfeld/berkeley-parser-analyser">Berkeley Parser Analyser </a>.
-
-The server is based on `Express.js`.
+This website is an online demo of the <a href="https://github.com/jkkummerfeld/berkeley-parser-analyser">Berkeley Parser Analyser </a>. The server is based on `Express.js`.
 
 Install
 ---
 
-`npm install`
+Make sure  <a href="https://github.com/jkkummerfeld/berkeley-parser-analyser">Berkeley Parser Analyser </a> is in the same folder with this project. And make sure   <a href="https://github.com/jkkummerfeld/berkeley-parser-analyser">Berkeley Parser Analyser </a> is working properly with its sample commands.
+
+Example:
+
+```
+some_folder
+├── berkeley-parser-analyser
+├── parser-server
+```
+
+Then under `parser-server` folder, run: `npm install`.
 
 Run
 ---
 
-If you have gulp installed: `gulp` .
+If you have gulp installed, run: `gulp`.
 
 Otherwise use: `npm start`.
 
