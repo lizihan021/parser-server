@@ -139,18 +139,14 @@ router.post('/upload', function(req, res, next) {
             }
 
             // display output
-            console.log(py_script);
             if (py_script != "print_coloured_errors.py"){
               var display_file = path.join(__dirname, "../" + result_path + prefix + 
                                  req.files.test_file[0].filename + ".error_counts");
               fs.readFile(display_file, 'utf8', function (err,data) {
-                console.log(display_file);
-                console.log(err);
                 if (!err) {
                   res.render('download', {files: files, 
                                           out_content: data, 
                                           title: 'Download'});
-                  console.log(data);
                 }
                 else {
                   res.render('download', {files: files, title: 'Download'});
