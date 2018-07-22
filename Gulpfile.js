@@ -1,3 +1,4 @@
+// For Gulp 4.0.0 with node v 9.2.0
 const gulp = require('gulp');
 const spawn = require('child_process').spawn;
 let node;

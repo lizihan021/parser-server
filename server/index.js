@@ -71,7 +71,7 @@ var _getFilesInFolder = function(dir) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var gold_select = _getFilesInFolder(path.join(__dirname, gold_path));
-  res.render('index', {title: 'Home',
+  res.render('index', {title: 'Berkeley Parser Analyser',
                        gold_select: gold_select,
                        script_select: Object.keys(script_extension_map)});
 });
@@ -130,17 +130,37 @@ router.post('/upload', function(req, res, next) {
               throw('Error: python error ' + err.code);
             }
             console.log('results: %j', results);
+
+            // create download links
+            var files = [];
+            for (var i = script_extension_map[py_script].length - 1; i >= 0; i--) {
+              files.push(prefix + req.files.test_file[0].filename + 
+                         script_extension_map[py_script][i]);
+            }
+
+            // display output
+            console.log(py_script);
+            if (py_script != "print_coloured_errors.py"){
+              var display_file = path.join(__dirname, "../" + result_path + prefix + 
+                                 req.files.test_file[0].filename + ".error_counts");
+              fs.readFile(display_file, 'utf8', function (err,data) {
+                console.log(display_file);
+                console.log(err);
+                if (!err) {
+                  res.render('download', {files: files, 
+                                          out_content: data, 
+                                          title: 'Download'});
+                  console.log(data);
+                }
+                else {
+                  res.render('download', {files: files, title: 'Download'});
+                }
+              });
+            }
+            else {
+              res.render('download', {files: files, title: 'Download'});
+            }
         });
-
-        // create download links
-        var files = [];
-        for (var i = script_extension_map[py_script].length - 1; i >= 0; i--) {
-          files.push(prefix + req.files.test_file[0].filename + 
-                     script_extension_map[py_script][i]);
-        }
-
-        // load result downloading page.
-        res.render('download', {files: files, title: 'Download'});
       }
       else {
         throw('Error: invalid post request, no test file');

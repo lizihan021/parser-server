@@ -4,6 +4,14 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
-    br
-    <a href="/">Go Back to Home</a>
+    div(class="banner")
+    div(class="logo-container")
+      img(src="/croma-lab_logo.png" style="height: 75px;")
+    div(class="body-container")
+      block content
+      br
+      a(href="/") Go Back to Home
+    div(class="footer")
+      p.
+        Built with &#9829; by Zihan Li, Jonathan K. Kummerfeld, and Walter S. Lasecki.
+

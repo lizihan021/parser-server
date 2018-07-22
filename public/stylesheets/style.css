@@ -1,6 +1,74 @@
+.body-container {
+  padding: 5% 15% 10% 15%;
+}
+
+.banner {
+  z-index: 2;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 3px;
+  background-color: #FFD347;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 1% 15% 2% 15%;
+  background-color: #222222;
+  color: #BBBBBB;
+  font-size: 13px;
+}
+
+.logo-container {
+  z-index: 1;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 1% 15% 0% 15%;
+  background-color: #FFFFFF;
+}
+
+pre {
+  font-size: 65%;
+  line-height: 1.2em;
+  font-family: "Courier 10 Pitch", Courier, monospace; 
+  white-space: pre; 
+  white-space: pre-wrap; 
+  white-space: -moz-pre-wrap; 
+  white-space: -o-pre-wrap; 
+
+  height:1%;
+  width: auto;
+  display: block;
+  clear: both;
+  color: #555555;
+  padding: 1em 1em;
+  margin: auto 20px auto 20px;
+  background: #f4f4f4;
+  border: solid 1px #e1e1e1
+} 
+
+code { 
+  font-size: 65%;
+  line-height: 1.2em;
+  font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+
+  display: inline; 
+  color: #555555;
+  background: #f4f4f4;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+input {
+  font-size: 15px;
 }
 
 a {

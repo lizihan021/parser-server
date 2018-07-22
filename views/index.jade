@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1 Welcome to Berkeley Parser Analyser Demo
+  h1 Berkeley Parser Analyser
   p.
     This website is a online demo of the <a href="https://github.com/jkkummerfeld/berkeley-parser-analyser">Berkeley Parser Analyser </a> 
   p.
@@ -9,23 +9,25 @@ block content
   br
   form(enctype="multipart/form-data", method="post", action="/upload")
     div.input
-      span.label 1. Upload test file 
+      span.label 1. Upload test file:  
       input(type="file", name="test_file")
     br
     div.input
-      span.label 2. Upload gold file 
+      span.label 2. Upload gold file: 
       input(type="file", name="gold_file")
     div.input
-      span.label Or choose gold file
+      span.label Or choose gold file: 
       select(name="gold_select")
         option(value="none") None
         each f in gold_select
           option(value= f) #{f}
     br
     div.input
-      span.label 3. Choose script
+      span.label 3. Choose script: 
       select(name="script_select")
         each f in script_select
           option(value= f) #{f}
+    br
     div.actions
+      span.label 4. 
       input(type="submit", value="submit")
