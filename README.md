@@ -25,6 +25,11 @@ If you have gulp installed, run: `gulp`.
 
 Otherwise use: `npm start`.
 
+Parameters
+---
+
+The server keeps result files for `30 min`, and will stop working if size of `private` folder is over `500 MB`. You can adjust those parameters in `server/index.js`. 
+
 Server Structure
 ---
 
