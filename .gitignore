@@ -1,5 +1,6 @@
 node_modules
-public/upload/*
-public/results/*
-!public/upload/placeholder
-!public/results/placeholder
+logfile.log
+private/upload/*
+private/results/*
+!private/upload/placeholder
+!private/results/placeholder

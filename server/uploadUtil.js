@@ -1,17 +1,19 @@
-var  multer=require('multer');
+var multer = require('multer');
+var crypto = require('crypto');
 
 var storage = multer.diskStorage({
 
   destination: function (req, file, cb) {
-    cb(null, './public/upload');
+    cb(null, './private/upload');
    }, 
 
   filename: function (req, file, cb) {
-    var fileFormat = (file.originalname).split(".");
-    cb(null, file.fieldname + '-' + Date.now() + "." + fileFormat[fileFormat.length - 1]);
+    var shasum = crypto.createHash('sha1');
+    shasum.update(file.originalname + '-' + Date.now());
+    cb(null, shasum.digest('hex') + ".upload");
   }
 
-});  
+}); 
 
 var upload = multer({
   storage: storage,
